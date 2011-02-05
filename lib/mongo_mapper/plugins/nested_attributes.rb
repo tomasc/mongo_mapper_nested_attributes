@@ -13,6 +13,7 @@
 module MongoMapper
   module Plugins
     module NestedAttributes
+      extend ActiveSupport::Concern
 
 
 
@@ -85,7 +86,11 @@ module MongoMapper
         end
         
         def destroy_existing_record(association_name, existing_record)
-          send(association_name).destroy_all(:id => existing_record.id)
+          if existing_record.class.embeddable?
+            send(association_name).delete(existing_record)
+          else
+            send(association_name).destroy_all(:id => existing_record.id)
+          end
         end
         
         def has_destroy_flag?(hash)
