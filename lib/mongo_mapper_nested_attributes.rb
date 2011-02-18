@@ -1,0 +1,1 @@
+require 'mongo_mapper/plugins/nested_attributes'

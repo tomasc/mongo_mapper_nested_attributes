@@ -13,12 +13,12 @@
 module MongoMapper
   module Plugins
     module NestedAttributes
+      
       extend ActiveSupport::Concern
 
 
 
-      # CLASS METHODS
-      
+      # -------------------------------------------------------------------------------------
       module ClassMethods
 
         def accepts_nested_attributes_for(association_name)
@@ -36,8 +36,7 @@ module MongoMapper
 
 
 
-      # INSTANCE METHODS
-      
+      # -------------------------------------------------------------------------------------
       module InstanceMethods
         
         private
